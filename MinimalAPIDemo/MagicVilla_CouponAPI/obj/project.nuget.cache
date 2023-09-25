@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "XkUadq/l9jzN8WgINmetmkeEZeEafL++KBONLrggz0ifJemILB52BVuS8BvBx1b8MS7htvTra2uD5RhTAAeeXA==",
+  "dgSpecHash": "kZk/1ja7X15Ubb81K8PIgeds/4PBnCdOPozWNOLLf7KfnyRQSc6CxkMJ/RueOuyoE14pjg6tkoBKBkd4zsZ2ng==",
   "success": true,
   "projectFilePath": "C:\\Users\\kentz\\Documents\\GitHub\\Repositories\\Minimal-API-s-in-.NET-7\\MinimalAPIDemo\\MagicVilla_CouponAPI\\MagicVilla_CouponAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kentz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\kentz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\kentz\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
+    "C:\\Users\\kentz\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.7.1\\fluentvalidation.dependencyinjectionextensions.11.7.1.nupkg.sha512",
     "C:\\Users\\kentz\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
     "C:\\Users\\kentz\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\kentz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

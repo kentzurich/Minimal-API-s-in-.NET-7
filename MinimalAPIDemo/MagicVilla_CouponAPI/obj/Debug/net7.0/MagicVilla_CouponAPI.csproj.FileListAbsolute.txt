@@ -33,3 +33,5 @@ C:\Users\kentz\Documents\GitHub\Repositories\Minimal-API-s-in-.NET-7\MinimalAPID
 C:\Users\kentz\Documents\GitHub\Repositories\Minimal-API-s-in-.NET-7\MinimalAPIDemo\MagicVilla_CouponAPI\obj\Debug\net7.0\ref\MagicVilla_CouponAPI.dll
 C:\Users\kentz\Documents\GitHub\Repositories\Minimal-API-s-in-.NET-7\MinimalAPIDemo\MagicVilla_CouponAPI\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\kentz\Documents\GitHub\Repositories\Minimal-API-s-in-.NET-7\MinimalAPIDemo\MagicVilla_CouponAPI\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\kentz\Documents\GitHub\Repositories\Minimal-API-s-in-.NET-7\MinimalAPIDemo\MagicVilla_CouponAPI\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\kentz\Documents\GitHub\Repositories\Minimal-API-s-in-.NET-7\MinimalAPIDemo\MagicVilla_CouponAPI\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
