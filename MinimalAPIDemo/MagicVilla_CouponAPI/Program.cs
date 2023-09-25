@@ -20,7 +20,8 @@ if (app.Environment.IsDevelopment())
 
 
 //Endpoints before app.run
-app.MapGet("api/coupon", () => {
+app.MapGet("api/coupon", (ILogger<Program> _logger) => {
+    _logger.Log(LogLevel.Information, "Getting all coupons.");
     return Results.Ok(CouponStore.CouponList);
 })
 .WithName("GetCoupons")
