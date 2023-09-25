@@ -1,3 +1,5 @@
+using MagicVilla_CouponAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,7 +18,9 @@ if (app.Environment.IsDevelopment())
 
 
 //Endpoints before app.run
-
+app.MapGet("api/coupon", () => {
+    return Results.Ok(CouponStore.CouponList);
+});
 
 
 app.UseHttpsRedirection();
