@@ -14,6 +14,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Endpoints before app.run
+app.MapGet("/helloworld", () => "Hello World!");
+app.MapPost("/helloworld2", () => "Hello World2!");
+
 app.UseHttpsRedirection();
 
 app.Run();
