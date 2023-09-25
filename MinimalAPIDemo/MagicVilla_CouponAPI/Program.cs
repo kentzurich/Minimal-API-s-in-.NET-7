@@ -14,9 +14,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 //Endpoints before app.run
-app.MapGet("/helloworld", () => "Hello World!");
-app.MapPost("/helloworld2", () => "Hello World2!");
+app.MapGet("/helloworld", () => {
+    return Results.BadRequest("error");
+});
+app.MapPost("/helloworld2", () => Results.Ok("Hello World2!"));
+
 
 app.UseHttpsRedirection();
 
