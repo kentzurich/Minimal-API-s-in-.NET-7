@@ -16,8 +16,8 @@ if (app.Environment.IsDevelopment())
 
 
 //Endpoints before app.run
-app.MapGet("/helloworld", () => {
-    return Results.BadRequest("error");
+app.MapGet("/helloworld/{id:int}", (int id) => {
+    return Results.Ok(id);
 });
 app.MapPost("/helloworld2", () => Results.Ok("Hello World2!"));
 
