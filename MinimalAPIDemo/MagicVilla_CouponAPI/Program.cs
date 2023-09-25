@@ -22,11 +22,11 @@ if (app.Environment.IsDevelopment())
 //Endpoints before app.run
 app.MapGet("api/coupon", () => {
     return Results.Ok(CouponStore.CouponList);
-});
+}).WithName("GetCoupons");
 
 app.MapGet("api/coupon/{id:int}", (int id) => {
     return Results.Ok(CouponStore.CouponList.FirstOrDefault(x => x.Id == id));
-});
+}).WithName("GetCoupon");
 
 app.MapPost("api/coupon", ([FromBody] Coupon coupon) => {
 
@@ -38,14 +38,15 @@ app.MapPost("api/coupon", ([FromBody] Coupon coupon) => {
 
     coupon.Id = CouponStore.CouponList.OrderByDescending(x => x.Id).FirstOrDefault().Id + 1;
     CouponStore.CouponList.Add(coupon);
-    return Results.Ok(coupon);
-});
+    return Results.CreatedAtRoute("GetCoupon", new { id = coupon.Id }, coupon);
+    //return Results.Created($"/api/coupon/{coupon.Id}", coupon);
+}).WithName("CreateCoupon");
 
 app.MapPut("api/coupon", () => {
-});
+}).WithName("UpdateCoupon");
 
 app.MapDelete("api/coupon/{id:int}", (int id) => {
-});
+}).WithName("DeleteCoupon");
 
 
 app.UseHttpsRedirection();
