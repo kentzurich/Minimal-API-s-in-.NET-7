@@ -28,6 +28,8 @@ if (app.Environment.IsDevelopment())
 
 
 //Endpoints before app.run
+
+//GET ALL
 app.MapGet("api/coupon", (ILogger<Program> _logger) => {
     _logger.Log(LogLevel.Information, "Getting all coupons.");
 
@@ -41,6 +43,7 @@ app.MapGet("api/coupon", (ILogger<Program> _logger) => {
 .WithName("GetCoupons")
 .Produces<IEnumerable<ApiResponse>>((int)HttpStatusCode.OK);
 
+//GET
 app.MapGet("api/coupon/{id:int}", (int id) => {
     ApiResponse response = new();
     response.Result = CouponStore.CouponList.FirstOrDefault(x => x.Id == id);
@@ -52,6 +55,7 @@ app.MapGet("api/coupon/{id:int}", (int id) => {
 .WithName("GetCoupon")
 .Produces<ApiResponse>((int)HttpStatusCode.OK);
 
+//INSERT
 app.MapPost("api/coupon", 
 async (IMapper _mapper, 
         IValidator<CouponCreateDto> _validation,
@@ -99,6 +103,7 @@ async (IMapper _mapper,
 .Produces<ApiResponse>((int)HttpStatusCode.Created)
 .Produces((int)HttpStatusCode.BadRequest);
 
+//UPDATE
 app.MapPut("api/coupon", 
 async (IMapper _mapper,
  IValidator<CouponUpdateDto> _validation,
@@ -142,6 +147,7 @@ async (IMapper _mapper,
 .Produces<ApiResponse>((int)HttpStatusCode.OK)
 .Produces((int)HttpStatusCode.BadRequest);
 
+//DELETE
 app.MapDelete("api/coupon/{id:int}", 
 (int id) => {
     ApiResponse response = new() { IsSuccess = false, StatusCode = HttpStatusCode.BadRequest };
