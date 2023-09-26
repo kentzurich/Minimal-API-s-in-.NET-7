@@ -85,10 +85,10 @@ async (ICouponRepository _couponRepo,
     if (string.IsNullOrEmpty(couponCreateDto.Name))
     {
         response.ErrorMessages.Add("Invalid Coupon Name.");
-        return Results.BadRequest(response);
+        return Results.BadRequest(response);    
     }
 
-    if (await _couponRepo.GetAsync(couponCreateDto.Name.ToLower()) != null)
+    if (await _couponRepo.GetAsync(couponCreateDto.Name) != null)
     {
         response.ErrorMessages.Add("Coupon Name already exist.");
         return Results.BadRequest(response);
@@ -146,7 +146,7 @@ async (ICouponRepository _couponRepo,
          return Results.BadRequest(response);
      }
 
-     if (await _couponRepo.GetAsync(couponUpdateDto.Name.ToLower()) != null)
+     if (await _couponRepo.GetAsync(couponUpdateDto.Name) != null)
      {
          response.ErrorMessages.Add("Coupon Name already exist.");
          return Results.BadRequest(response);
