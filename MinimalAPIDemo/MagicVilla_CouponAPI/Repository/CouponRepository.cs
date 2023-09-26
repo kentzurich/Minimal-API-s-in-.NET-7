@@ -23,12 +23,16 @@ namespace MagicVilla_CouponAPI.Repository
 
         public async Task<Coupon> GetAsync(int id)
         {
-            return await _db.Coupons.FirstOrDefaultAsync(x => x.Id == id);
+            return await _db.Coupons
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Coupon> GetAsync(string couponName)
         {
-            return await _db.Coupons.FirstOrDefaultAsync(x => x.Name.ToLower() == couponName.ToLower());
+            return await _db.Coupons
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Name.ToLower() == couponName.ToLower());
         }
 
         public async Task RemoveAsync(Coupon coupon)
