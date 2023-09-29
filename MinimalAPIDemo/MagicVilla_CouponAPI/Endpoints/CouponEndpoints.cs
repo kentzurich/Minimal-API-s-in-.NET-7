@@ -18,14 +18,21 @@ namespace MagicVilla_CouponAPI.Endpoints
             app.MapGet("api/coupon", GetAllCoupon)
                 .WithName("GetCoupons")
                 .Produces<IEnumerable<ApiResponse>>((int)HttpStatusCode.OK)
-                .Produces((int)HttpStatusCode.Unauthorized)
-                .RequireAuthorization("AdminOnly");
+                .Produces((int)HttpStatusCode.Unauthorized);
+                //.RequireAuthorization("AdminOnly");
 
             //GET
             app.MapGet("api/coupon/{id:int}", GetCoupon)
                 .WithName("GetCoupon")
                 .Produces<ApiResponse>((int)HttpStatusCode.OK)
-                .Produces((int)HttpStatusCode.Unauthorized);
+                .Produces((int)HttpStatusCode.Unauthorized)
+                .AddEndpointFilter(async(context, next) =>
+                {
+                    var id = context.GetArgument<int>(1);
+                    if (id == 0) return Results.BadRequest("Cannot have 0 in id.");
+
+                    return await next(context);
+                });
 
             //INSERT
             app.MapPost("api/coupon", CreateCoupon)
@@ -64,7 +71,7 @@ namespace MagicVilla_CouponAPI.Endpoints
             return Results.Ok(response);
         }
 
-        [Authorize]
+        //[Authorize]
         private async static Task<IResult> GetCoupon(ICouponRepository _couponRepo, int id)
         {
             ApiResponse response = new();
@@ -76,7 +83,7 @@ namespace MagicVilla_CouponAPI.Endpoints
             return Results.Ok(response);
         }
 
-        [Authorize]
+        //[Authorize]
         private async static Task<IResult> CreateCoupon(ICouponRepository _couponRepo,
             IMapper _mapper,
             IValidator<CouponCreateDto> _validation,
@@ -129,7 +136,7 @@ namespace MagicVilla_CouponAPI.Endpoints
             //return Results.Created($"/api/coupon/{coupon.Id}", coupon);
         }
 
-        [Authorize]
+        //[Authorize]
         private async static Task<IResult> UpdateCoupon(ICouponRepository _couponRepo,
             IMapper _mapper,
             IValidator<CouponUpdateDto> _validation,
@@ -185,7 +192,7 @@ namespace MagicVilla_CouponAPI.Endpoints
             return Results.Ok(response);
         }
 
-        [Authorize]
+        //[Authorize]
         private async static Task<IResult> DeleteCoupon(ICouponRepository _couponRepo, int id)
         {
             ApiResponse response = new() { IsSuccess = false, StatusCode = HttpStatusCode.BadRequest };
