@@ -16,32 +16,42 @@ namespace MagicVilla_CouponAPI.Endpoints
             //GET ALL
             app.MapGet("api/coupon", GetAllCoupon)
                 .WithName("GetCoupons")
-                .Produces<IEnumerable<ApiResponse>>((int)HttpStatusCode.OK);
+                .Produces<IEnumerable<ApiResponse>>((int)HttpStatusCode.OK)
+                .Produces((int)HttpStatusCode.Unauthorized)
+                .RequireAuthorization();
 
             //GET
             app.MapGet("api/coupon/{id:int}", GetCoupon)
                 .WithName("GetCoupon")
-                .Produces<ApiResponse>((int)HttpStatusCode.OK);
+                .Produces<ApiResponse>((int)HttpStatusCode.OK)
+                .Produces((int)HttpStatusCode.Unauthorized)
+                .RequireAuthorization();
 
             //INSERT
             app.MapPost("api/coupon", CreateCoupon)
                 .WithName("CreateCoupon")
                 .Accepts<CouponCreateDto>("application/json")
                 .Produces<ApiResponse>((int)HttpStatusCode.Created)
-                .Produces((int)HttpStatusCode.BadRequest);
+                .Produces((int)HttpStatusCode.BadRequest)
+                .Produces((int)HttpStatusCode.Unauthorized)
+                .RequireAuthorization();
 
             //UPDATE
             app.MapPut("api/coupon", UpdateCoupon)
                 .WithName("UpdateCoupon")
                 .Accepts<CouponUpdateDto>("application/json")
                 .Produces<ApiResponse>((int)HttpStatusCode.OK)
-                .Produces((int)HttpStatusCode.BadRequest);
+                .Produces((int)HttpStatusCode.BadRequest)
+                .Produces((int)HttpStatusCode.Unauthorized)
+                .RequireAuthorization();
 
             //DELETE
             app.MapDelete("api/coupon/{id:int}", DeleteCoupon)
                 .WithName("DeleteCoupon")
                 .Produces<ApiResponse>((int)HttpStatusCode.OK)
-                .Produces((int)HttpStatusCode.BadRequest);
+                .Produces((int)HttpStatusCode.BadRequest)
+                .Produces((int)HttpStatusCode.Unauthorized)
+                .RequireAuthorization();
         }
 
         private async static Task<IResult> GetAllCoupon(ICouponRepository _couponRepo, ILogger<Program> _logger)
