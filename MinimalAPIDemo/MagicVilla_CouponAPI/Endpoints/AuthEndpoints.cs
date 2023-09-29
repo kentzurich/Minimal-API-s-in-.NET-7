@@ -9,9 +9,9 @@ using System.Net;
 
 namespace MagicVilla_CouponAPI.Endpoints
 {
-    public static class CouponEndpoints
+    public static class AuthEndpoints
     {
-        public static void ConfigureCouponEndpoint(this WebApplication app)
+        public static void ConfigureAuthEndpoint(this WebApplication app)
         {
             app.MapPost("api/login", Login)
                 .WithName("Login")

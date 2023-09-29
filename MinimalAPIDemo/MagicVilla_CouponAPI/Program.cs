@@ -31,8 +31,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//app.UseAuthentication();
+//app.UseAuthorization();
+
 //Endpoints before app.run
 app.ConfigureCouponEndpoint();
+app.ConfigureAuthEndpoint();
 
 app.UseHttpsRedirection();
 
