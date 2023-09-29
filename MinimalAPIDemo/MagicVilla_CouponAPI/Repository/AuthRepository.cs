@@ -74,7 +74,7 @@ namespace MagicVilla_CouponAPI.Repository
                 UserName = registrationRequestDto.UserName,
                 Password = registrationRequestDto.Password,
                 Name = registrationRequestDto.Name,
-                Role = "admin"
+                Role = "customer"
             };
 
             _db.LocalUsers.Add(user);
