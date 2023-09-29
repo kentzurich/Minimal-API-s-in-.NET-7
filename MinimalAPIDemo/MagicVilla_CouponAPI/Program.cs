@@ -5,6 +5,7 @@ using MagicVilla_CouponAPI.Endpoints;
 using MagicVilla_CouponAPI.Repository;
 using MagicVilla_CouponAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -97,4 +98,25 @@ app.ConfigureAuthEndpoint();
 
 app.UseHttpsRedirection();
 
+app.MapGet("api/coupon/special", ([AsParameters] CouponRequest req, AppDbContext _db) =>
+{
+    if(req.CouponName != null)
+        return _db.Coupons
+            .Where(x => x.Name.Contains(req.CouponName))
+            .Skip((req.Page - 1) * req.PageSize)
+            .Take(req.PageSize);
+
+    return _db.Coupons.Skip((req.Page - 1) * req.PageSize).Take(req.PageSize);
+});
+
 app.Run();
+
+class CouponRequest
+{
+    public string CouponName { get; set; }
+    [FromHeader(Name = "PageSize")]
+    public int PageSize { get; set; }
+    [FromHeader(Name = "Page")]
+    public int Page { get; set; }
+    public ILogger<CouponRequest> Logger { get; set; }
+}
